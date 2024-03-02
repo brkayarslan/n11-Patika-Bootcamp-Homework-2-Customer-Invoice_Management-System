@@ -1,5 +1,6 @@
 package com.berkayarslan.CustomerInvoiceManagementSystem.model;
 
+import com.berkayarslan.CustomerInvoiceManagementSystem.general.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,10 +13,11 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 @Table(name = "MERCHANT")
-public class Merchant {
+public class Merchant extends BaseEntity {
 
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Merchant")
+    @SequenceGenerator(name = "Merchant", sequenceName = "MERCHANT_ID_SEQ", allocationSize = 1)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
@@ -39,7 +41,8 @@ public class Merchant {
     @Column
     private Long registrationNumber;
 
-    @Column
+    @Enumerated(EnumType.STRING)
+    @Column(name = "SECTOR",length = 30)
     private Sector sector;
 
     @Column
