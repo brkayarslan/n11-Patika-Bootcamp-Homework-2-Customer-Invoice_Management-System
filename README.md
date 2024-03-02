@@ -32,36 +32,36 @@ Before you begin, ensure you have the following installed:
 ## Some Sample Features
 
 - List All Merchants
-  ![Output](./OutputImg/all-merchants.png)
+  ![Output](./outputImg/all-merchants.png)
 
 
 - Create a new customer
 
-  ![Output](./OutputImg/record-customer.png)
+  ![Output](./outputImg/record-customer.png)
 
 - List customers with the letter 'C' in them
 
-  ![Output](./OutputImg/merchant-starting-with-c.png)
+  ![Output](./outputImg/merchant-starting-with-c.png)
 
 - List the total amount of invoices of customers who registered in June
 
-  ![Output](./OutputImg/monthly-total-of-bills.png)
+  ![Output](./outputImg/monthly-total-of-bills.png)
 
 - List all invoices in the system
-  ![Output](./OutputImg/all-invoices.png)
+  ![Output](./outputImg/all-invoices.png)
 
 - Listing invoices over $1500 in the system
 
-  ![Output](./OutputImg/Invoices-over-1500.png)
+  ![Output](./outputImg/Invoices-over-1500.png)
 
 - Calculating the average of invoices over $1500 in the system
 
-  ![Output](./OutputImg/avarage-over-1500.png)
+  ![Output](./outputImg/avarage-over-1500.png)
 
 - List customers with invoices under $500 in the system
 
-  ![Output](./OutputImg/under-500-customers.png)
+  ![Output](./outputImg/under-500-customers.png)
 
 - List the industry in which companies whose average invoices for June were below $750
 
-  ![Output](./OutputImg/sectors-below-750.png)
+  ![Output](./outputImg/sectors-below-750.png)
