@@ -1,5 +1,6 @@
 package com.berkayarslan.CustomerInvoiceManagementSystem.model;
 
+import com.berkayarslan.CustomerInvoiceManagementSystem.general.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,16 +9,17 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
-@AllArgsConstructor
+
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
 @Table(name = "CUSTOMER")
-public class Customer {
+public class Customer extends BaseEntity {
 
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Customer")
+    @SequenceGenerator(name = "Customer", sequenceName = "CUSTOMER_ID_SEQ", allocationSize = 1)
     @Id
-    @GeneratedValue
     private Long id;
 
     @Column
