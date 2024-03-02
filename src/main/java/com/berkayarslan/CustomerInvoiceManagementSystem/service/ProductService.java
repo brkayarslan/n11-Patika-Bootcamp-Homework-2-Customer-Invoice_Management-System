@@ -1,14 +1,15 @@
 package com.berkayarslan.CustomerInvoiceManagementSystem.service;
 
+import com.berkayarslan.CustomerInvoiceManagementSystem.general.BaseService;
+import com.berkayarslan.CustomerInvoiceManagementSystem.model.Product;
 import com.berkayarslan.CustomerInvoiceManagementSystem.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProductService {
+public class ProductService extends BaseService<Product,ProductRepository> {
 
-    private final ProductRepository productRepository;
 
-    public ProductService(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+    protected ProductService(ProductRepository repository) {
+        super(repository);
     }
 }

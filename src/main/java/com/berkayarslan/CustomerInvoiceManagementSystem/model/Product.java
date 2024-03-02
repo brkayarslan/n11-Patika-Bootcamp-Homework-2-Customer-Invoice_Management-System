@@ -1,25 +1,23 @@
 package com.berkayarslan.CustomerInvoiceManagementSystem.model;
 
+import com.berkayarslan.CustomerInvoiceManagementSystem.general.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
+
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
 @Table
-public class Product {
+public class Product extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column
-    private int piece;
 
     @Column
     private String name;
@@ -29,4 +27,11 @@ public class Product {
 
     @Column
     private Double unitPrice;
+
+
+    public Product(String name, Double taxRate, Double unitPrice) {
+        this.name = name;
+        this.taxRate = taxRate;
+        this.unitPrice = unitPrice;
+    }
 }
