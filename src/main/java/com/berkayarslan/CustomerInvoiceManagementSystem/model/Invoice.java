@@ -1,20 +1,25 @@
 package com.berkayarslan.CustomerInvoiceManagementSystem.model;
 
 
+import com.berkayarslan.CustomerInvoiceManagementSystem.general.BaseEntity;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @NoArgsConstructor
 @Data
 @Entity
 @Table(name = "INVOICE")
-public class Invoice {
+public class Invoice extends BaseEntity {
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Invoice")
+    @SequenceGenerator(name = "Invoice", sequenceName = "INVOICE_ID_SEQ", allocationSize = 1)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @JoinColumn(name = "merchant_id")
@@ -40,12 +45,23 @@ public class Invoice {
     @Column
     private Long waybillNumber;
 
-    @JoinTable(
-            name = "invoice_product",
-            joinColumns = @JoinColumn(name = "invoice_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id")
-    )
-    @ManyToMany
-    private List<Product> product;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "invoice_id")
+    private List<InvoiceProduct> invoiceProducts;
+
+    @Column
+    private Double totalAmount;
+
+
+    public Invoice(Merchant merchant, Customer customer, Long billNumber, LocalDateTime invoiceDate, Long orderNumber, Long currentNumber, Long waybillNumber, List<InvoiceProduct> invoiceProducts) {
+        this.merchant = merchant;
+        this.customer = customer;
+        this.billNumber = billNumber;
+        this.invoiceDate = invoiceDate;
+        this.orderNumber = orderNumber;
+        this.currentNumber = currentNumber;
+        this.waybillNumber = waybillNumber;
+        this.invoiceProducts = invoiceProducts;
+    }
 }
